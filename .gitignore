@@ -1,0 +1,37 @@
+#############
+## Windows crap
+#############
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Mac crap
+.DS_Store
+
+
+#############
+## NetBeans
+#############
+
+/arWebAlerterGateway/nbproject/private/
+/arWebAlerterGateway/build/
+/arWebAlerterGateway/nbbuild/
+/arWebAlerterGateway/dist/
+/arWebAlerterGateway/nbdist/
+/arWebAlerterGateway/nbactions.xml
+/arWebAlerterGateway/nb-configuration.xml
+
+# Class Files #
+/arWebAlerterGateway/*.class
+
+# Package Files #
+/arWebAlerterGateway/*.jar
+/arWebAlerterGateway/*.war
+/arWebAlerterGateway/*.ear
