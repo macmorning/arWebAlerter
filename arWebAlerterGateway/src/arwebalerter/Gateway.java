@@ -12,11 +12,20 @@ import com.bmc.arsys.api.Constants;
 import com.bmc.arsys.api.AlertReceiver;
 import com.bmc.arsys.api.AlertMessageInfo;
 import com.bmc.arsys.api.AlertCallbackHandler;
+import java.io.IOException;
+
 /**
  *
  * @author syyvon
  */
 public class Gateway {
+
+    private static class alertCallback implements AlertCallbackHandler {
+        public void onAlertRecieved(AlertMessageInfo alertMsg) {
+            System.out.println("Alert recieved : " + alertMsg);            
+        }
+    }
+
     private static ARServerUser ctx;
     private static AlertReceiver alerter;
     private static int portnum;
@@ -57,13 +66,15 @@ public class Gateway {
         }
     }
  
-    public static void onAlertRecieved(AlertMessageInfo AlertStr) {
-        System.out.println("Alert recieved : " + AlertStr);
-    }
     
     private static void connectAlertProxy() {
         try {
-            alerter = new AlertReceiver(onAlertRecieved(AlertMessageInfo));
+            alerter = new AlertReceiver(new alertCallback());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            System.out.println("Receiving");
             alerter.beginReceive(ctx);
         } catch (ARException e) {
             System.out.println(e.getMessage());
