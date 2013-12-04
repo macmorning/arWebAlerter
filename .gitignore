@@ -27,6 +27,7 @@ $RECYCLE.BIN/
 /arWebAlerterGateway/nbdist/
 /arWebAlerterGateway/nbactions.xml
 /arWebAlerterGateway/nb-configuration.xml
+/arWebAlerterGateway/lib/
 
 # Class Files #
 /arWebAlerterGateway/*.class
