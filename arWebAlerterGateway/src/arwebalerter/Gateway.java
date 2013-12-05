@@ -19,16 +19,16 @@ import java.io.IOException;
  * @author syyvon
  */
 public class Gateway {
-
-    private static class alertCallback implements AlertCallbackHandler {
-        public void onAlertRecieved(AlertMessageInfo alertMsg) {
-            System.out.println("Alert recieved : " + alertMsg);            
+    private static class MyCallBack implements AlertCallbackHandler {
+        public void onAlertRecieved(AlertMessageInfo alert) {
+            System.out.println(alert.getAlertText());
         }
     }
 
     private static ARServerUser ctx;
     private static AlertReceiver alerter;
     private static int portnum;
+    
     /**
      * @param args the command line arguments
      */
@@ -69,8 +69,8 @@ public class Gateway {
     
     private static void connectAlertProxy() {
         try {
-            alerter = new AlertReceiver(new alertCallback());
-        } catch (Exception e) {
+            alerter = new AlertReceiver(new MyCallBack());
+        } catch (IOException e) {
             System.out.println(e.getMessage());
         }
         try {
